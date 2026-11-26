@@ -4,18 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viridiana | Felices 18</title>
+<title>Viridiana | Capítulo 18</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
 
 :root {
-    --rosa: #ff9fbd;
-    --lila: #c8a5ff;
-    --amarillo: #ffe18d;
-    --menta: #a5ead5;
-    --texto: #55445f;
-    --blanco: #fffafc;
+    --papel: #fff9ed;
+    --tinta: #26364a;
+    --azul: #829fc7;
+    --naranja: #ed9567;
+    --amarillo: #f5cc70;
+    --lila: #b9a4d8;
+    --verde: #9cbda6;
 }
 
 * {
@@ -24,458 +25,387 @@
     padding: 0;
 }
 
-html { scroll-behavior: smooth; }
-
 body {
-    font-family: 'Nunito', sans-serif;
-    color: var(--texto);
-    background: #fff5fa;
-    overflow-x: hidden;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--tinta);
+    background: #e9e3d8;
+    min-height: 100vh;
 }
 
-button { font-family: inherit; }
-
-.fondo {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-      radial-gradient(circle at 10% 15%,#ffe0ec,transparent 35%),
-      radial-gradient(circle at 90% 20%,#e8ddff,transparent 35%),
-      radial-gradient(circle at 50% 100%,#d9f8ef,transparent 40%),
-      #fff7fb;
-}
-
-nav {
-    padding: 22px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 27px;
-    color: #ed83aa;
-}
-
-nav span {
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 900;
-    color: #aa8bb8;
+button {
+    font-family: inherit;
+    cursor: pointer;
 }
 
 .portada {
-    min-height: 88vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at 15% 20%,#f7d7b5,transparent 30%),
+        radial-gradient(circle at 85% 80%,#c8d7e9,transparent 35%),
+        #e9e3d8;
+}
+
+.libro-cerrado {
+    width: min(440px,100%);
+    min-height: 590px;
+    background: #344a62;
+    color: white;
+    border-radius: 7px 20px 20px 7px;
+    padding: 45px 32px;
     text-align: center;
-    padding: 40px 20px 80px;
+    position: relative;
+    box-shadow: 14px 15px 0 #b5a895,
+                20px 25px 40px #28374b44;
+    border-left: 12px solid #26384c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.libro-cerrado::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid #ffffff55;
+    pointer-events: none;
+}
+
+.detalle-portada {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #f5cc70;
+    font-weight: 800;
+}
+
+.portada-titulo {
+    font-family: 'Playfair Display',serif;
+    font-size: clamp(42px,10vw,66px);
+    line-height: 1.05;
+    margin: 22px 0;
+}
+
+.portada-titulo span {
+    color: #f5cc70;
+}
+
+.portada-numero {
+    font-family: 'Playfair Display',serif;
+    font-size: 150px;
+    line-height: 1;
+    color: #f5cc70;
+    text-shadow: 5px 5px 0 #e18f64;
+}
+
+.portada-frase {
+    color: #e2e9f1;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.boton-abrir {
+    background: #f5cc70;
+    border: none;
+    padding: 16px 25px;
+    border-radius: 5px;
+    color: #26364a;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.boton-abrir:hover {
+    transform: translateY(-4px);
+    background: #ffe09a;
+}
+
+/* LIBRO ABIERTO */
+
+#libro {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 18px 60px;
+    background: #e9e3d8;
+}
+
+.encabezado {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.encabezado strong {
+    font-family: 'Playfair Display',serif;
+    font-size: 22px;
+}
+
+.encabezado span {
+    color: #788394;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.cerrar-libro {
+    border: 0;
+    background: #344a62;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.libro-abierto {
+    max-width: 1100px;
+    min-height: 670px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    background: var(--papel);
+    box-shadow: 0 20px 60px #4d4b4030;
+    border-radius: 8px;
+    overflow: hidden;
     position: relative;
 }
 
-.portada-contenido {
-    max-width: 750px;
-    animation: aparecer 1s ease;
+.lomo {
+    background: #344a62;
+    padding: 35px 20px;
+    color: white;
 }
 
-@keyframes aparecer {
-    from { opacity: 0; transform: translateY(35px); }
-    to { opacity: 1; transform: translateY(0); }
+.lomo h3 {
+    font-family: 'Playfair Display',serif;
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.capitulo-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding: 14px 10px;
+    color: #e5eaf0;
+    background: transparent;
+    border-bottom: 1px solid #ffffff20;
+    font-size: 13px;
+    transition: .2s;
+}
+
+.capitulo-link:hover,
+.capitulo-link.activo {
+    background: #ffffff18;
+    color: #f5cc70;
+    padding-left: 17px;
+}
+
+.numero-pagina {
+    margin-top: 50px;
+    font-size: 11px;
+    color: #b8c4d1;
+    letter-spacing: 2px;
+}
+
+.contenido {
+    padding: 55px clamp(20px,6vw,70px);
+    position: relative;
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 34px,
+            #d8cfc025 35px
+        ),
+        var(--papel);
+}
+
+.contenido::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #e5d9c8;
+}
+
+.pagina {
+    display: none;
+    animation: pasar .5s ease;
+}
+
+.pagina.activa {
+    display: block;
+}
+
+@keyframes pasar {
+    from {
+        opacity: 0;
+        transform: translateX(25px) rotateY(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0);
+    }
 }
 
 .etiqueta {
-    color: #df8bad;
-    letter-spacing: 4px;
     font-size: 11px;
     font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--naranja);
 }
 
-.nombre {
-    font-family: 'Fredoka', sans-serif;
-    font-size: clamp(55px, 12vw, 100px);
-    color: #e98eae;
-    margin-top: 15px;
+.titulo {
+    font-family: 'Playfair Display',serif;
+    font-size: clamp(35px,6vw,55px);
+    line-height: 1.15;
+    margin: 20px 0;
+    color: #344a62;
 }
 
-.numero {
-    font-family: 'Fredoka', sans-serif;
-    font-size: clamp(140px, 30vw, 220px);
-    line-height: .95;
-    color: #b69be9;
-    text-shadow: 7px 9px 0 #e9dafa;
+.texto {
+    font-size: 15px;
+    color: #687487;
+    line-height: 2;
+    max-width: 650px;
 }
 
-.portada p:not(.etiqueta) {
-    margin: 22px auto;
-    max-width: 540px;
-    line-height: 1.8;
-    color: #8c7897;
+.ilustracion {
+    background: #f3e7d5;
+    border-radius: 10px;
+    min-height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.sticker {
+    font-size: 75px;
+    display: inline-block;
+    animation: flotar 2s infinite ease-in-out;
+}
+
+.sticker:nth-child(2) {
+    animation-delay: .5s;
+}
+
+@keyframes flotar {
+    50% { transform: translateY(-13px) rotate(5deg); }
+}
+
+.separador {
+    border: 0;
+    border-top: 1px solid #d8cdbb;
+    margin: 25px 0;
 }
 
 .boton {
     border: none;
-    border-radius: 40px;
-    padding: 15px 25px;
-    background: #f39cba;
+    background: #344a62;
     color: white;
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 7px 0 #df7fa3;
-    transition: .25s;
+    padding: 13px 20px;
+    border-radius: 5px;
+    font-weight: 800;
+    margin: 8px 5px 8px 0;
+    transition: .2s;
 }
 
 .boton:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 11px 0 #df7fa3;
+    background: #526e8c;
+    transform: translateY(-2px);
 }
 
-.boton:active {
-    transform: translateY(3px);
-    box-shadow: 0 3px 0 #df7fa3;
-}
+.boton.naranja { background: var(--naranja); }
+.boton.azul { background: var(--azul); }
+.boton.verde { background: var(--verde); color: #26364a; }
 
-.decoracion {
-    position: absolute;
-    font-size: 35px;
-    animation: flotar 3s ease-in-out infinite;
-}
-
-.decoracion.uno { top: 18%; left: 12%; }
-.decoracion.dos { top: 25%; right: 12%; animation-delay: .7s; }
-.decoracion.tres { bottom: 15%; left: 17%; animation-delay: 1s; }
-.decoracion.cuatro { bottom: 18%; right: 16%; animation-delay: 1.5s; }
-
-@keyframes flotar {
-    50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-.seccion {
-    max-width: 1050px;
-    margin: auto;
-    padding: 65px 22px 100px;
-    text-align: center;
-}
-
-.mini-titulo {
-    color: #bd91d9;
-    letter-spacing: 4px;
-    font-size: 11px;
-    font-weight: 900;
-}
-
-.titulo {
-    font-family: 'Fredoka', sans-serif;
-    font-size: clamp(32px,6vw,49px);
-    color: #806a94;
-    margin: 15px 0;
-}
-
-.descripcion {
-    color: #a08ca8;
-    line-height: 1.8;
-    max-width: 580px;
-    margin: 0 auto 35px;
-}
-
-/* PERSONAJES */
-
-.personaje {
-    position: relative;
-    width: 125px;
-    height: 150px;
-    margin: 10px auto 22px;
-    animation: rebotar 2s ease-in-out infinite;
-}
-
-@keyframes rebotar {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-}
-
-.cabeza {
-    width: 105px;
-    height: 105px;
-    border-radius: 46% 46% 44% 44%;
-    background: #fff;
-    border: 3px solid #f5d5e3;
-    position: absolute;
-    top: 8px;
-    left: 10px;
-    box-shadow: 0 7px 0 #f6e6ef;
-}
-
-.cabeza.rosa { background: #ffc8da; }
-.cabeza.lila { background: #dfccff; }
-.cabeza.melocoton { background: #ffdbc2; }
-.cabeza.mandarina { background: #ffd49b; }
-
-.ojo {
-    position: absolute;
-    width: 9px;
-    height: 13px;
-    background: #55445f;
-    border-radius: 50%;
-    top: 43px;
-}
-
-.ojo.izq { left: 28px; }
-.ojo.der { right: 28px; }
-
-.boca {
-    position: absolute;
-    top: 62px;
-    left: 46px;
-    width: 12px;
-    height: 8px;
-    border-bottom: 3px solid #a65f80;
-    border-radius: 50%;
-}
-
-.meji {
-    position: absolute;
-    top: 60px;
-    width: 17px;
-    height: 9px;
-    border-radius: 50%;
-    background: #ff92ad;
-    opacity: .8;
-}
-
-.meji.izq { left: 12px; }
-.meji.der { right: 12px; }
-
-.cuerpo {
-    position: absolute;
-    bottom: 0;
-    left: 36px;
-    width: 55px;
-    height: 40px;
-    border-radius: 50% 50% 35% 35%;
-    background: #f4a9c5;
-    border: 3px solid #fff;
-}
-
-.brazo {
-    position: absolute;
-    width: 15px;
-    height: 35px;
-    background: #ffc8da;
-    border-radius: 20px;
-    top: 88px;
-}
-
-.brazo.izq { left: 15px; transform: rotate(30deg); }
-.brazo.der { right: 12px; transform: rotate(-30deg); }
-
-.personaje.saludando .brazo.der {
-    animation: saludar .4s infinite alternate;
-    transform-origin: top center;
-}
-
-@keyframes saludar {
-    to { transform: rotate(-80deg); }
-}
-
-.personaje.bailando {
-    animation: bailar .35s infinite alternate;
-}
-
-@keyframes bailar {
-    from { transform: rotate(-12deg) translateY(0); }
-    to { transform: rotate(12deg) translateY(-12px); }
-}
-
-.estrellita {
-    position: absolute;
-    font-size: 23px;
-    top: -10px;
-    right: -10px;
-}
-
-/* OPCIONES */
-
-.opciones {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 22px;
-    margin-top: 45px;
-}
-
-.opcion {
-    border: 2px solid #f5e5ef;
-    border-radius: 27px;
-    background: #ffffffc9;
-    padding: 25px 18px;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 9px 25px #a887a511;
-}
-
-.opcion:hover {
-    transform: translateY(-8px) rotate(-1deg);
-    border-color: #e8b3d1;
-    box-shadow: 0 15px 30px #bd91d933;
-}
-
-.opcion h3 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 23px;
-    color: #9274a9;
-    margin: 8px 0;
-}
-
-.opcion p {
-    color: #a28ca9;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.opcion .mini-personaje {
-    transform: scale(.75);
-    height: 115px;
-    margin-bottom: 0;
-}
-
-.emoji-grande {
-    font-size: 45px;
-    margin: 8px;
-}
-
-.abrir {
-    margin-top: 16px;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 17px;
-    background: #f6d8e6;
-    color: #956e91;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-/* VENTANAS INTERACTIVAS */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    background: #4e3b5e99;
-    backdrop-filter: blur(8px);
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-}
-
-.modal.activo {
+.navegacion {
     display: flex;
-    animation: aparecer .3s ease;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ded5c8;
 }
 
-.ventana {
-    position: relative;
-    background: #fff9fc;
-    width: 100%;
-    max-width: 570px;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-radius: 30px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 20px 70px #33203d55;
-    border: 4px solid white;
-    animation: entradaVentana .4s ease;
+.navegacion button {
+    background: transparent;
+    border: 1px solid #c7bcae;
+    color: #56667a;
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-weight: 800;
 }
 
-@keyframes entradaVentana {
-    from { transform: scale(.75) translateY(30px); opacity: 0; }
-    to { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-.cerrar {
-    position: absolute;
-    right: 16px;
-    top: 13px;
-    border: none;
-    background: #f8e4ee;
-    color: #9d7899;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    font-size: 19px;
-    font-weight: bold;
-}
-
-.ventana h2 {
-    font-family: 'Fredoka', sans-serif;
-    color: #9b7db0;
-    font-size: 31px;
-    margin: 12px 0;
-}
-
-.ventana p {
-    color: #927f9b;
-    line-height: 1.8;
-    margin: 12px auto 20px;
-    max-width: 420px;
-}
-
-.accion {
-    background: #b99be7;
+.navegacion button:hover {
+    background: #344a62;
     color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 13px 20px;
-    cursor: pointer;
-    font-weight: 900;
-    margin: 5px;
-    box-shadow: 0 5px 0 #a181d2;
 }
 
-.accion.rosa { background: #f3a1bf; box-shadow: 0 5px 0 #dc83a7; }
-.accion.mint { background: #8ed8c1; box-shadow: 0 5px 0 #70bfa7; }
-.accion.amarillo { background: #f0c86e; box-shadow: 0 5px 0 #d9ad53; }
+/* CAPÍTULO 18 */
+
+.numeros {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.numero-boton {
+    border: none;
+    background: #e9e0f3;
+    color: #65517e;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 7px;
+    min-height: 55px;
+    transition: .2s;
+}
+
+.numero-boton:hover {
+    transform: scale(1.08);
+    background: #c9b5e8;
+}
 
 .resultado {
-    background: #f9eaf2;
-    border-radius: 20px;
-    padding: 18px;
-    min-height: 65px;
-    color: #866e91;
-    font-weight: 800;
-    margin: 18px auto;
-    line-height: 1.7;
-}
-
-/* REGALO */
-
-.regalo {
-    font-size: 95px;
-    cursor: pointer;
-    display: inline-block;
-    animation: rebotar 1.2s infinite;
-    transition: .4s;
-}
-
-.regalo.abierto {
-    transform: rotate(15deg) scale(1.3);
-    animation: none;
+    background: #f1e8d9;
+    padding: 22px;
+    min-height: 75px;
+    border-radius: 7px;
+    color: #5c6b7b;
+    line-height: 1.8;
+    margin: 20px 0;
 }
 
 /* PASTEL */
 
-.pastel {
-    width: 190px;
-    height: 100px;
-    margin: 50px auto 10px;
-    border-radius: 15px 15px 20px 20px;
+.pastel-zona {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
     position: relative;
-    background: linear-gradient(90deg,#f7a5c5,#ffd4e1,#e6a8d9);
-    box-shadow: 0 12px 0 #e8b1c9;
+    margin: 30px 0;
+}
+
+.pastel {
+    width: 210px;
+    height: 100px;
+    background: #eaa1a3;
+    border-radius: 12px 12px 20px 20px;
+    position: relative;
+    box-shadow: 0 10px 0 #c87d88;
 }
 
 .pastel::before {
@@ -484,36 +414,35 @@ nav span {
     width: 100%;
     height: 35px;
     top: -17px;
-    left: 0;
     border-radius: 50%;
-    background: #fff1f4;
+    background: #fff1d7;
 }
 
 .velas {
     position: absolute;
+    top: -58px;
+    left: 75px;
     display: flex;
-    gap: 25px;
-    left: 70px;
-    top: -63px;
+    gap: 30px;
 }
 
 .vela {
     position: relative;
     width: 12px;
-    height: 47px;
-    background: repeating-linear-gradient(45deg,#fff 0 6px,#b99be7 6px 12px);
-    border-radius: 5px;
+    height: 43px;
+    background: repeating-linear-gradient(45deg,#fff 0 6px,#829fc7 6px 12px);
+    border-radius: 4px;
 }
 
 .llama {
     position: absolute;
-    top: -22px;
+    top: -23px;
     left: -2px;
     width: 16px;
     height: 22px;
-    background: #ffd56c;
-    border-radius: 50% 50% 45% 45%;
-    box-shadow: 0 0 17px #ffcf5c;
+    border-radius: 50%;
+    background: #ffd46b;
+    box-shadow: 0 0 15px #ffd46b;
     animation: fuego .4s infinite alternate;
 }
 
@@ -521,79 +450,37 @@ nav span {
     to { transform: rotate(10deg) scale(.85); }
 }
 
-.vela.apagada .llama { display: none; }
-
-/* GLOBOS */
-
-.globos {
-    height: 190px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+.vela.apagada .llama {
+    display: none;
 }
 
-.globo {
-    width: 65px;
-    height: 85px;
-    border-radius: 50% 50% 45% 45%;
-    background: #f5a9c8;
-    position: relative;
+/* REGALO */
+
+.regalo {
+    font-size: 100px;
     cursor: pointer;
-    animation: flotar 2s infinite ease-in-out;
+    display: inline-block;
+    transition: .4s;
 }
 
-.globo:nth-child(2) {
-    background: #c6a6f4;
-    animation-delay: .4s;
+.regalo:hover {
+    transform: scale(1.15) rotate(-8deg);
 }
 
-.globo:nth-child(3) {
-    background: #a1e3ce;
-    animation-delay: .8s;
-}
+/* CELEBRACIÓN */
 
-.globo::after {
-    content: "";
-    position: absolute;
-    bottom: -7px;
-    left: 29px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 9px solid #d79dbb;
-}
-
-.globo.reventado {
-    animation: explotar .35s forwards;
-    pointer-events: none;
-}
-
-@keyframes explotar {
-    to { transform: scale(1.8); opacity: 0; }
-}
-
-/* FIESTA */
-
-.fiestita {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    align-items: center;
-    min-height: 175px;
-    flex-wrap: wrap;
-}
-
-.fiestita .personaje {
-    transform: scale(.85);
-    margin: 0 -5px;
-}
-
-.confeti {
+#confeti {
     position: fixed;
-    top: -30px;
-    z-index: 100;
+    inset: 0;
     pointer-events: none;
-    animation: caer 3.5s linear forwards;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.particula {
+    position: absolute;
+    top: -30px;
+    animation: caer 3s linear forwards;
 }
 
 @keyframes caer {
@@ -603,422 +490,459 @@ nav span {
     }
 }
 
-footer {
-    text-align: center;
-    padding: 35px;
-    color: #bd9fb9;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
+@media(max-width:700px) {
+    .libro-abierto {
+        grid-template-columns: 1fr;
+    }
 
-@media(max-width:650px) {
-    .opciones { grid-template-columns: 1fr; }
-    .decoracion { font-size: 25px; }
-    nav { padding: 20px; }
-    nav span { font-size: 8px; }
-    .ventana { padding: 28px 15px; }
+    .lomo {
+        padding: 20px;
+    }
+
+    .lomo h3 {
+        margin-bottom: 12px;
+    }
+
+    .capitulos {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 4px;
+    }
+
+    .capitulo-link {
+        border: 1px solid #ffffff20;
+        border-radius: 4px;
+        font-size: 11px;
+    }
+
+    .numero-pagina {
+        display: none;
+    }
+
+    .contenido {
+        padding: 35px 22px;
+    }
+
+    .numeros {
+        grid-template-columns: repeat(4,1fr);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="fondo"></div>
+<div id="confeti"></div>
 
-<nav>
-    <div class="logo">♡ Viridiana</div>
-    <span>UN DÍA MUY ESPECIAL</span>
-</nav>
+<!-- PORTADA DEL LIBRO -->
 
-<header class="portada">
-    <div class="decoracion uno">🌸</div>
-    <div class="decoracion dos">⭐</div>
-    <div class="decoracion tres">💗</div>
-    <div class="decoracion cuatro">🎀</div>
+<section class="portada" id="portada">
+    <div class="libro-cerrado">
 
-    <div class="portada-contenido">
-        <p class="etiqueta">¡HOY ES TU DÍA!</p>
-        <h1 class="nombre">Viridiana</h1>
-        <div class="numero">18</div>
-        <p>
-            ¡Felices 18 años! Que esta nueva etapa esté llena
-            de aventuras, sonrisas y momentos increíbles.
-        </p>
+        <div class="detalle-portada">EDICIÓN ESPECIAL · 2026</div>
 
-        <div class="personaje saludando">
-            <div class="cabeza rosa">
-                <div class="ojo izq"></div>
-                <div class="ojo der"></div>
-                <div class="meji izq"></div>
-                <div class="meji der"></div>
-                <div class="boca"></div>
-            </div>
-            <div class="brazo izq"></div>
-            <div class="brazo der"></div>
-            <div class="cuerpo"></div>
-            <span class="estrellita">✨</span>
+        <div>
+            <p style="letter-spacing:4px;font-size:11px;color:#d9e1ed">
+                UNA HISTORIA EXTRAORDINARIA
+            </p>
+
+            <h1 class="portada-titulo">
+                Viridiana<br>
+                <span>Capítulo</span>
+            </h1>
+
+            <div class="portada-numero">18</div>
+
+            <p class="portada-frase">
+                Una nueva etapa, nuevas historias<br>
+                y muchas aventuras por descubrir.
+            </p>
         </div>
 
-        <button class="boton" onclick="document.getElementById('sorpresas').scrollIntoView({behavior:'smooth'})">
-            ¡DESCUBRE TUS SORPRESAS! 🎁
+        <button class="boton-abrir" onclick="abrirLibro()">
+            ABRIR ESTE LIBRO →
         </button>
-    </div>
-</header>
 
-<section class="seccion" id="sorpresas">
-    <p class="mini-titulo">♡ UN PEQUEÑO MUNDO PARA TI ♡</p>
-    <h2 class="titulo">¡Elige una aventura!</h2>
-    <p class="descripcion">
-        Hay cuatro sorpresas esperándote.
-        Toca cada una para descubrir qué sucede.
-    </p>
-
-    <div class="opciones">
-
-        <div class="opcion" onclick="abrir('regalo')">
-            <div class="personaje mini-personaje">
-                <div class="cabeza rosa">
-                    <div class="ojo izq"></div><div class="ojo der"></div>
-                    <div class="meji izq"></div><div class="meji der"></div>
-                    <div class="boca"></div>
-                </div>
-                <div class="brazo izq"></div><div class="brazo der"></div>
-                <div class="cuerpo"></div>
-                <span class="estrellita">🎀</span>
-            </div>
-            <h3>El regalo secreto</h3>
-            <p>Un personaje tiene algo preparado para ti.</p>
-            <button class="abrir">ABRIR REGALO →</button>
-        </div>
-
-        <div class="opcion" onclick="abrir('pastel')">
-            <div class="emoji-grande">🎂</div>
-            <h3>El pastel mágico</h3>
-            <p>Hay unas velitas esperando a que pidas un deseo.</p>
-            <button class="abrir">IR AL PASTEL →</button>
-        </div>
-
-        <div class="opcion" onclick="abrir('globos')">
-            <div class="emoji-grande">🎈</div>
-            <h3>Globos sorpresa</h3>
-            <p>Algunos globos esconden pequeñas sorpresas.</p>
-            <button class="abrir">VER LOS GLOBOS →</button>
-        </div>
-
-        <div class="opcion" onclick="abrir('fiesta')">
-            <div class="emoji-grande">🥳</div>
-            <h3>¡La gran fiesta!</h3>
-            <p>Los personajes están listos para celebrar tus 18.</p>
-            <button class="abrir">¡A BAILAR! →</button>
-        </div>
-
+        <div class="detalle-portada">FELICES 18 AÑOS</div>
     </div>
 </section>
 
-<!-- VENTANA DEL REGALO -->
+<!-- LIBRO ABIERTO -->
 
-<div class="modal" id="modal-regalo">
-    <div class="ventana">
-        <button class="cerrar" onclick="cerrar()">×</button>
+<main id="libro">
 
-        <p class="mini-titulo">🎀 UNA SORPRESA PARA TI 🎀</p>
-        <h2>¡Hola, Viridiana!</h2>
-
-        <div class="personaje saludando">
-            <div class="cabeza rosa">
-                <div class="ojo izq"></div><div class="ojo der"></div>
-                <div class="meji izq"></div><div class="meji der"></div>
-                <div class="boca"></div>
-            </div>
-            <div class="brazo izq"></div><div class="brazo der"></div>
-            <div class="cuerpo"></div>
-            <span class="estrellita">💗</span>
-        </div>
-
-        <p>¡Tengo un regalo para ti! ¿Quieres descubrir qué hay dentro?</p>
-
-        <div class="regalo" id="regalo" onclick="abrirRegalo()">🎁</div>
-
-        <div class="resultado" id="resultado-regalo">
-            ¡Toca el regalo para abrirlo!
-        </div>
-
-        <button class="accion rosa" onclick="abrirRegalo()">
-            ¡ABRIR REGALO! 🎀
+    <header class="encabezado">
+        <strong>Viridiana · Capítulo 18</strong>
+        <span>LIBRO INTERACTIVO</span>
+        <button class="cerrar-libro" onclick="volverPortada()">
+            Cerrar libro ×
         </button>
-    </div>
-</div>
+    </header>
 
-<!-- VENTANA DEL PASTEL -->
+    <div class="libro-abierto">
 
-<div class="modal" id="modal-pastel">
-    <div class="ventana">
-        <button class="cerrar" onclick="cerrar()">×</button>
+        <aside class="lomo">
+            <h3>Índice</h3>
 
-        <p class="mini-titulo">🎂 MOMENTO ESPECIAL 🎂</p>
-        <h2>¡Pide un deseo!</h2>
+            <div class="capitulos">
+                <button class="capitulo-link activo" onclick="irPagina(0)">
+                    01 · La protagonista
+                </button>
 
-        <div class="personaje">
-            <div class="cabeza lila">
-                <div class="ojo izq"></div><div class="ojo der"></div>
-                <div class="meji izq"></div><div class="meji der"></div>
-                <div class="boca"></div>
+                <button class="capitulo-link" onclick="irPagina(1)">
+                    02 · 18 cosas
+                </button>
+
+                <button class="capitulo-link" onclick="irPagina(2)">
+                    03 · Un deseo
+                </button>
+
+                <button class="capitulo-link" onclick="irPagina(3)">
+                    04 · El regalo
+                </button>
+
+                <button class="capitulo-link" onclick="irPagina(4)">
+                    05 · La celebración
+                </button>
             </div>
-            <div class="brazo izq"></div><div class="brazo der"></div>
-            <div class="cuerpo" style="background:#c8a5ff"></div>
-            <span class="estrellita">⭐</span>
-        </div>
 
-        <p>¡Nuestro pastel tiene dos velitas! Piensa en un deseo y apágalas.</p>
-
-        <div class="pastel">
-            <div class="velas">
-                <div class="vela"><div class="llama"></div></div>
-                <div class="vela"><div class="llama"></div></div>
+            <div class="numero-pagina" id="contador">
+                PÁGINA 01 / 05
             </div>
-        </div>
+        </aside>
 
-        <div class="resultado" id="resultado-pastel">
-            ¡Cierra los ojos y pide tu deseo! ✨
-        </div>
+        <section class="contenido">
 
-        <button class="accion rosa" id="apagar" onclick="apagarVelas()">
-            ¡SOPLAR LAS VELITAS! 🕯️
-        </button>
-    </div>
-</div>
+            <!-- PÁGINA 1 -->
 
-<!-- VENTANA DE LOS GLOBOS -->
+            <article class="pagina activa">
+                <p class="etiqueta">CAPÍTULO 01 · LA PROTAGONISTA</p>
 
-<div class="modal" id="modal-globos">
-    <div class="ventana">
-        <button class="cerrar" onclick="cerrar()">×</button>
+                <h2 class="titulo">
+                    ¡Esta historia<br>
+                    es sobre ti!
+                </h2>
 
-        <p class="mini-titulo">🎈 JUEGO DE SORPRESAS 🎈</p>
-        <h2>¡Explota los globos!</h2>
+                <p class="texto">
+                    Hoy se celebra algo muy especial: ¡tus 18 años!
+                    Una nueva etapa comienza y con ella llegan
+                    oportunidades, experiencias y un montón de
+                    historias que todavía están por escribirse.
+                    <br><br>
+                    Este pequeño libro fue preparado para celebrar
+                    tu día y recordarte que lo mejor de tu historia
+                    todavía está por venir.
+                </p>
 
-        <div class="personaje saludando">
-            <div class="cabeza melocoton">
-                <div class="ojo izq"></div><div class="ojo der"></div>
-                <div class="meji izq"></div><div class="meji der"></div>
-                <div class="boca"></div>
-            </div>
-            <div class="brazo izq"></div><div class="brazo der"></div>
-            <div class="cuerpo" style="background:#ffcfad"></div>
-            <span class="estrellita">🎈</span>
-        </div>
-
-        <p>¡Cada globo tiene un mensaje escondido! Toca los tres para descubrirlos.</p>
-
-        <div class="globos" id="globos">
-            <div class="globo" onclick="explotarGlobo(this,0)"></div>
-            <div class="globo" onclick="explotarGlobo(this,1)"></div>
-            <div class="globo" onclick="explotarGlobo(this,2)"></div>
-        </div>
-
-        <div class="resultado" id="resultado-globos">
-            Globos descubiertos: 0 de 3 🎈
-        </div>
-
-        <button class="accion mint" onclick="reiniciarGlobos()">
-            VOLVER A INFLAR 🎈
-        </button>
-    </div>
-</div>
-
-<!-- VENTANA DE LA FIESTA -->
-
-<div class="modal" id="modal-fiesta">
-    <div class="ventana">
-        <button class="cerrar" onclick="cerrar()">×</button>
-
-        <p class="mini-titulo">🎉 ¡CELEBRACIÓN ACTIVADA! 🎉</p>
-        <h2>¡Todos a bailar!</h2>
-
-        <p>¡Los pequeños invitados llegaron para celebrar tus 18 años!</p>
-
-        <div class="fiestita">
-            <div class="personaje bailando">
-                <div class="cabeza rosa">
-                    <div class="ojo izq"></div><div class="ojo der"></div>
-                    <div class="meji izq"></div><div class="meji der"></div>
-                    <div class="boca"></div>
+                <div class="ilustracion">
+                    <span class="sticker">🎂</span>
+                    <span class="sticker">⭐</span>
+                    <span class="sticker">🎈</span>
                 </div>
-                <div class="brazo izq"></div><div class="brazo der"></div>
-                <div class="cuerpo"></div>
-            </div>
 
-            <div class="personaje bailando" style="animation-delay:.2s">
-                <div class="cabeza lila">
-                    <div class="ojo izq"></div><div class="ojo der"></div>
-                    <div class="meji izq"></div><div class="meji der"></div>
-                    <div class="boca"></div>
+                <h2 style="font-family:'Playfair Display';color:#ed9567">
+                    ¡Felices 18, Viridiana!
+                </h2>
+
+                <div class="navegacion">
+                    <span></span>
+                    <button onclick="irPagina(1)">Siguiente página →</button>
                 </div>
-                <div class="brazo izq"></div><div class="brazo der"></div>
-                <div class="cuerpo" style="background:#c8a5ff"></div>
-            </div>
+            </article>
 
-            <div class="personaje bailando" style="animation-delay:.4s">
-                <div class="cabeza mandarina">
-                    <div class="ojo izq"></div><div class="ojo der"></div>
-                    <div class="meji izq"></div><div class="meji der"></div>
-                    <div class="boca"></div>
+            <!-- PÁGINA 2 -->
+
+            <article class="pagina">
+                <p class="etiqueta">CAPÍTULO 02 · UN NÚMERO ESPECIAL</p>
+
+                <h2 class="titulo">
+                    18 pequeñas<br>
+                    sorpresas
+                </h2>
+
+                <p class="texto">
+                    Cada número esconde una pequeña frase.
+                    ¡Selecciona cualquiera para descubrirla!
+                </p>
+
+                <div class="numeros" id="numeros"></div>
+
+                <div class="resultado" id="resultadoNumero">
+                    Selecciona un número del 1 al 18. ✨
                 </div>
-                <div class="brazo izq"></div><div class="brazo der"></div>
-                <div class="cuerpo" style="background:#ffd49b"></div>
-            </div>
-        </div>
 
-        <div class="resultado" id="resultado-fiesta">
-            ¡Los personajes están esperando tu señal!
-        </div>
+                <div class="navegacion">
+                    <button onclick="irPagina(0)">← Anterior</button>
+                    <button onclick="irPagina(2)">Siguiente →</button>
+                </div>
+            </article>
 
-        <button class="accion rosa" onclick="bailar()">
-            ¡QUE COMIENCE LA FIESTA! 🎊
-        </button>
+            <!-- PÁGINA 3 -->
 
-        <button class="accion amarillo" onclick="confeti()">
-            ¡MÁS CONFETI! ✨
-        </button>
+            <article class="pagina">
+                <p class="etiqueta">CAPÍTULO 03 · MOMENTO ESPECIAL</p>
+
+                <h2 class="titulo">
+                    Un deseo<br>
+                    para recordar
+                </h2>
+
+                <p class="texto">
+                    Llegó el momento de pedir un deseo.
+                    Piensa en algo que quieras conseguir,
+                    cierra los ojos y prepárate.
+                </p>
+
+                <div class="pastel-zona">
+                    <div class="pastel">
+                        <div class="velas">
+                            <div class="vela"><div class="llama"></div></div>
+                            <div class="vela"><div class="llama"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resultado" id="resultadoPastel">
+                    ¡Pide tu deseo y apaga las velitas! 🕯️
+                </div>
+
+                <button class="boton naranja" id="botonVelas" onclick="apagarVelas()">
+                    APAGAR LAS VELITAS
+                </button>
+
+                <div class="navegacion">
+                    <button onclick="irPagina(1)">← Anterior</button>
+                    <button onclick="irPagina(3)">Siguiente →</button>
+                </div>
+            </article>
+
+            <!-- PÁGINA 4 -->
+
+            <article class="pagina">
+                <p class="etiqueta">CAPÍTULO 04 · UNA SORPRESA</p>
+
+                <h2 class="titulo">
+                    ¿Qué habrá<br>
+                    dentro?
+                </h2>
+
+                <p class="texto">
+                    Parece que alguien dejó un regalo por aquí.
+                    ¡Tócalo para descubrir lo que esconde!
+                </p>
+
+                <div class="ilustracion" style="flex-direction:column">
+                    <div class="regalo" id="regalo" onclick="abrirRegalo()">
+                        🎁
+                    </div>
+                    <p style="color:#829fc7;font-weight:800">
+                        TOCA EL REGALO
+                    </p>
+                </div>
+
+                <div class="resultado" id="resultadoRegalo">
+                    Todavía no has abierto tu regalo...
+                </div>
+
+                <button class="boton azul" onclick="abrirRegalo()">
+                    DESCUBRIR SORPRESA
+                </button>
+
+                <div class="navegacion">
+                    <button onclick="irPagina(2)">← Anterior</button>
+                    <button onclick="irPagina(4)">Siguiente →</button>
+                </div>
+            </article>
+
+            <!-- PÁGINA 5 -->
+
+            <article class="pagina">
+                <p class="etiqueta">CAPÍTULO 05 · FIN DEL LIBRO, NO DE LA HISTORIA</p>
+
+                <h2 class="titulo">
+                    ¡Que comience<br>
+                    la celebración!
+                </h2>
+
+                <p class="texto">
+                    18 años, un montón de experiencias por vivir
+                    y muchísimas páginas en blanco esperando
+                    a ser llenadas.
+                    <br><br>
+                    Disfruta cada momento, atrévete a intentar
+                    cosas nuevas y nunca dejes de perseguir
+                    aquello que te hace feliz.
+                </p>
+
+                <div class="ilustracion">
+                    <span class="sticker">🎊</span>
+                    <span class="sticker">🥳</span>
+                    <span class="sticker">🎉</span>
+                </div>
+
+                <h2 style="font-family:'Playfair Display';color:#ed9567">
+                    ¡FELICES 18, VIRIDIANA!
+                </h2>
+
+                <button class="boton naranja" onclick="celebrar()">
+                    ¡ACTIVAR LA FIESTA! 🎉
+                </button>
+
+                <div class="resultado" id="resultadoFiesta">
+                    ¡Pulsa el botón para llenar esta página de confeti!
+                </div>
+
+                <div class="navegacion">
+                    <button onclick="irPagina(3)">← Anterior</button>
+                    <button onclick="irPagina(0)">Volver al inicio ↻</button>
+                </div>
+            </article>
+
+        </section>
     </div>
-</div>
-
-<footer>
-    FELICES 18, VIRIDIANA ♡
-    <br><br>
-    HECHO CON MUCHO CARIÑO 🌸
-</footer>
+</main>
 
 <script>
-let globosDescubiertos = 0;
-let regalosAbiertos = false;
+let paginaActual = 0;
 let velasApagadas = false;
+let regaloAbierto = false;
 
-function abrir(nombre) {
-    cerrar();
-    document.getElementById('modal-' + nombre).classList.add('activo');
+const sorpresas = [
+    "Que nunca te falten motivos para sonreír. 🌟",
+    "Que tengas el valor de intentar cosas nuevas. 🚀",
+    "Que cada día te acerque a tus sueños. ✨",
+    "Que nunca falten las buenas amistades. 💫",
+    "Que colecciones momentos inolvidables. 🎈",
+    "Que siempre encuentres algo que te haga feliz. ☀️",
+    "Que tus planes tengan grandes resultados. 🎯",
+    "Que nunca pierdas la curiosidad. 🔎",
+    "Que tengas muchas aventuras por vivir. 🌎",
+    "Que nunca te falten las risas. 😂",
+    "Que aprendas algo nuevo cada día. 📚",
+    "Que tengas oportunidades increíbles. ⭐",
+    "Que siempre confíes en tus capacidades. 💪",
+    "Que disfrutes cada pequeño logro. 🏆",
+    "Que encuentres nuevos lugares favoritos. 🗺️",
+    "Que sigas creando grandes recuerdos. 📸",
+    "Que te sorprendan cosas maravillosas. 🎁",
+    "¡Que tus 18 sean inolvidables! 🎂"
+];
 
-    if(nombre === 'fiesta') {
-        confeti();
+function abrirLibro() {
+    document.getElementById('portada').style.display = 'none';
+    document.getElementById('libro').style.display = 'block';
+    window.scrollTo(0,0);
+}
+
+function volverPortada() {
+    document.getElementById('libro').style.display = 'none';
+    document.getElementById('portada').style.display = 'flex';
+    window.scrollTo(0,0);
+}
+
+function irPagina(numero) {
+    paginaActual = numero;
+
+    document.querySelectorAll('.pagina').forEach((pagina,i) => {
+        pagina.classList.toggle('activa',i === numero);
+    });
+
+    document.querySelectorAll('.capitulo-link').forEach((boton,i) => {
+        boton.classList.toggle('activo',i === numero);
+    });
+
+    document.getElementById('contador').textContent =
+        'PÁGINA ' + String(numero+1).padStart(2,'0') + ' / 05';
+
+    document.querySelector('.contenido').scrollIntoView({
+        behavior:'smooth',
+        block:'start'
+    });
+}
+
+function crearNumeros() {
+    const contenedor = document.getElementById('numeros');
+
+    for(let i=1;i<=18;i++) {
+        const boton = document.createElement('button');
+        boton.className = 'numero-boton';
+        boton.textContent = i;
+
+        boton.onclick = () => {
+            document.getElementById('resultadoNumero').textContent =
+                'NÚMERO ' + i + ': ' + sorpresas[i-1];
+
+            boton.style.background = '#f5cc70';
+            boton.style.transform = 'scale(1.1)';
+        };
+
+        contenedor.appendChild(boton);
     }
 }
 
-function cerrar() {
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.classList.remove('activo');
-    });
-}
-
-document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', function(e) {
-        if(e.target === modal) cerrar();
-    });
-});
-
-document.addEventListener('keydown', function(e) {
-    if(e.key === 'Escape') cerrar();
-});
-
-function abrirRegalo() {
-    if(regalosAbiertos) return;
-
-    regalosAbiertos = true;
-
-    const regalo = document.getElementById('regalo');
-    regalo.classList.add('abierto');
-    regalo.textContent = '🎊';
-
-    document.getElementById('resultado-regalo').innerHTML =
-        '¡SORPRESA! 🎉<br><br>' +
-        'Viridiana, que nunca te falten motivos para sonreír, ' +
-        'sueños por cumplir y momentos que se conviertan en recuerdos increíbles. ' +
-        '¡Disfruta muchísimo tus 18 años! 💗';
-
-    confeti();
-}
+crearNumeros();
 
 function apagarVelas() {
     if(velasApagadas) return;
 
     velasApagadas = true;
 
-    document.querySelectorAll('#modal-pastel .vela').forEach(vela => {
+    document.querySelectorAll('.vela').forEach(vela => {
         vela.classList.add('apagada');
     });
 
-    document.getElementById('resultado-pastel').innerHTML =
-        '¡DESEO CONCEDIDO! ✨<br>Que tus 18 estén llenos de cosas maravillosas. 💜';
+    document.getElementById('resultadoPastel').textContent =
+        '¡Deseo concedido! Que esta nueva etapa venga llena de momentos increíbles. ✨';
 
-    document.getElementById('apagar').textContent =
-        '¡FELICES 18! 🎂';
+    document.getElementById('botonVelas').textContent =
+        '¡FELICES 18!';
 
     confeti();
 }
 
-const mensajesGlobos = [
-    '🌸 Que nunca te falten razones para sonreír.',
-    '💜 Que todos tus sueños encuentren su camino.',
-    '⭐ ¡Que tus 18 sean una aventura inolvidable!'
-];
+function abrirRegalo() {
+    if(regaloAbierto) return;
 
-function explotarGlobo(globo, indice) {
-    if(globo.classList.contains('reventado')) return;
+    regaloAbierto = true;
 
-    globo.classList.add('reventado');
-    globosDescubiertos++;
+    document.getElementById('regalo').textContent = '🎉';
+    document.getElementById('regalo').style.transform =
+        'scale(1.4) rotate(15deg)';
 
-    document.getElementById('resultado-globos').innerHTML =
-        mensajesGlobos[indice] + '<br><br>' +
-        'Globos descubiertos: ' + globosDescubiertos + ' de 3';
+    document.getElementById('resultadoRegalo').innerHTML =
+        '<strong>¡SORPRESA!</strong><br><br>' +
+        'Viridiana, que tus 18 años estén llenos de nuevas aventuras, ' +
+        'grandes oportunidades, muchas risas y recuerdos increíbles. ' +
+        '¡Disfruta muchísimo tu día! 🎂';
 
-    if(globosDescubiertos === 3) {
-        document.getElementById('resultado-globos').innerHTML +=
-            '<br><br>¡DESCUBRISTE TODAS LAS SORPRESAS! 🎉';
-        confeti();
-    }
+    confeti();
 }
 
-function reiniciarGlobos() {
-    globosDescubiertos = 0;
-
-    document.querySelectorAll('.globo').forEach(globo => {
-        globo.classList.remove('reventado');
-    });
-
-    document.getElementById('resultado-globos').textContent =
-        'Globos descubiertos: 0 de 3 🎈';
-}
-
-function bailar() {
-    document.querySelectorAll('#modal-fiesta .personaje').forEach(personaje => {
-        personaje.classList.remove('bailando');
-        void personaje.offsetWidth;
-        personaje.classList.add('bailando');
-    });
-
-    document.getElementById('resultado-fiesta').textContent =
-        '¡FELICES 18, VIRIDIANA! ¡QUE SIGA LA FIESTA! 🎉';
+function celebrar() {
+    document.getElementById('resultadoFiesta').textContent =
+        '¡FELICES 18! Que empiece una etapa llena de aventuras y buenos momentos. 🎊';
 
     confeti();
 }
 
 function confeti() {
-    const simbolos = ['🎉','💗','✨','🌸','🎊','⭐','🎈','💜'];
+    const zona = document.getElementById('confeti');
+    const simbolos = ['🎉','⭐','🎊','✨','🎈','🎂','🌟'];
 
-    for(let i = 0; i < 65; i++) {
+    for(let i=0;i<65;i++) {
         const pieza = document.createElement('span');
-        pieza.className = 'confeti';
+        pieza.className = 'particula';
         pieza.textContent = simbolos[
-            Math.floor(Math.random() * simbolos.length)
+            Math.floor(Math.random()*simbolos.length)
         ];
 
-        pieza.style.left = Math.random() * 100 + 'vw';
-        pieza.style.animationDelay = Math.random() * 1.5 + 's';
-        pieza.style.fontSize = (Math.random() * 18 + 14) + 'px';
+        pieza.style.left = Math.random()*100+'vw';
+        pieza.style.animationDelay = Math.random()*1.5+'s';
+        pieza.style.fontSize = (15+Math.random()*18)+'px';
 
-        document.body.appendChild(pieza);
+        zona.appendChild(pieza);
 
-        setTimeout(() => pieza.remove(), 4000);
+        setTimeout(() => pieza.remove(),4500);
     }
 }
 </script>
