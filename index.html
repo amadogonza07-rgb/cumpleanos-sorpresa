@@ -2,133 +2,345 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una sorpresa para ti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Mis 18 años de ti ✨</title>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #5c3157;
-            padding: 20px;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .tarjeta {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px 25px;
-            border-radius: 25px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 10px 35px rgba(80, 40, 90, 0.2);
-        }
+body {
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #24132f, #663c75, #c47da9);
+    color: white;
+    overflow-x: hidden;
+}
 
-        h1 {
-            font-size: 32px;
-        }
+/* ESTRELLAS DEL FONDO */
 
-        .pastel {
-            font-size: 85px;
-            margin: 20px;
-            animation: flotar 2s infinite ease-in-out;
-        }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#ffd8ee 1px, transparent 1px);
+    background-size: 65px 65px, 95px 95px;
+    background-position: 0 0, 30px 40px;
+    opacity: .4;
+    animation: estrellas 15s linear infinite;
+}
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+@keyframes estrellas {
+    to { background-position: 100px 150px, 130px 190px; }
+}
 
-        button {
-            background: #e879ad;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 30px;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.contenedor {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+}
 
-        button:hover {
-            transform: scale(1.08);
-            background: #d95791;
-        }
+.tarjeta {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 45px 25px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 30px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    animation: entrada 1.2s ease;
+}
 
-        #mensaje {
-            display: none;
-            margin-top: 25px;
-            animation: aparecer 1s;
-        }
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        @keyframes flotar {
-            50% {
-                transform: translateY(-12px);
-            }
-        }
+.etiqueta {
+    color: #ffe2f1;
+    letter-spacing: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
 
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+.numero {
+    font-family: Georgia, serif;
+    font-size: clamp(110px, 25vw, 175px);
+    font-weight: bold;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #fff4cc, #ffc4e3, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 20px #ffb6df);
+    animation: brillo 3s infinite alternate;
+}
+
+@keyframes brillo {
+    to {
+        filter: drop-shadow(0 0 35px #ffb6df);
+    }
+}
+
+h1 {
+    font-size: clamp(25px, 6vw, 36px);
+    margin: 10px 0 18px;
+}
+
+.descripcion {
+    color: #f9e9f5;
+    line-height: 1.8;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.boton {
+    border: none;
+    padding: 16px 32px;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #ffb7dc, #e77db9);
+    color: #522544;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 25px rgba(255,150,210,.3);
+    transition: .3s;
+}
+
+.boton:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 35px rgba(255,150,210,.6);
+}
+
+.decoracion {
+    margin: 25px 0;
+    font-size: 25px;
+    letter-spacing: 12px;
+}
+
+#sorpresa {
+    display: none;
+    margin-top: 35px;
+    animation: aparecer 1.2s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#sorpresa h2 {
+    color: #ffe0f1;
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.carta {
+    padding: 25px;
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    line-height: 1.9;
+    color: #fff2fa;
+    font-size: 16px;
+}
+
+.firma {
+    margin-top: 25px;
+    color: #ffd7ec;
+    font-style: italic;
+}
+
+.confeti {
+    position: fixed;
+    top: -15px;
+    z-index: 10;
+    pointer-events: none;
+    animation: caer 4s linear forwards;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    margin-top: 30px;
+    color: #f5d5eb;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 480px) {
+    .tarjeta {
+        padding: 35px 18px;
+    }
+
+    .descripcion {
+        font-size: 15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="tarjeta">
+<div class="contenedor">
 
-        <h1>¡Tengo una sorpresa para ti! 💗</h1>
+    <main class="tarjeta">
 
-        <div class="pastel">🎂</div>
-
-        <p>
-            Hoy es un día muy especial...
-            y quería prepararte algo diferente.
+        <p class="etiqueta">
+            UNA FECHA MUY ESPECIAL
         </p>
 
-        <button onclick="abrirSorpresa()">
-            Abrir sorpresa 💌
-        </button>
+        <div class="numero">18</div>
 
-        <div id="mensaje">
-            <h2>¡Feliz cumpleaños! 🎉</h2>
+        <h1>¡Feliz cumpleaños! ✨</h1>
 
-            <p>
-                Espero que tengas un día increíble,
-                lleno de alegría, momentos bonitos
-                y muchas sonrisas.
-            </p>
-
-            <p>¡Que todos tus deseos se hagan realidad! ❤️</p>
-
-            <div style="font-size: 35px;">
-                🎈 🎁 🎊
-            </div>
+        <div class="decoracion">
+            ♡ ✧ ♡
         </div>
 
-    </div>
+        <p class="descripcion">
+            Hoy comienza una nueva etapa,
+            llena de sueños, aventuras,
+            experiencias y momentos inolvidables.
+            <br><br>
+            Y esta pequeña sorpresa es para ti. 💗
+        </p>
 
-    <script>
-        function abrirSorpresa() {
-            document.getElementById("mensaje").style.display = "block";
-        }
-    </script>
+        <button class="boton" onclick="abrirSorpresa()">
+            Descubrir sorpresa ♡
+        </button>
+
+        <section id="sorpresa">
+
+            <div class="decoracion">
+                🎂 ✨ 🎀
+            </div>
+
+            <h2>¡Bienvenidos tus 18! 🥂</h2>
+
+            <div class="carta">
+
+                Hoy no es un día cualquiera,
+                hoy celebras 18 años de vida
+                y el comienzo de una etapa increíble.
+
+                <br><br>
+
+                Deseo que nunca te falten motivos
+                para sonreír, personas que te quieran,
+                sueños por cumplir y aventuras
+                que algún día se conviertan
+                en recuerdos inolvidables.
+
+                <br><br>
+
+                Que la vida te sorprenda
+                con cosas maravillosas y que
+                nunca pierdas esa esencia
+                que te hace una persona especial.
+
+                <br><br>
+
+                ¡Disfruta muchísimo tus 18 años!
+
+                <div class="firma">
+                    Con mucho cariño. ❤️
+                </div>
+
+            </div>
+
+            <div class="decoracion">
+                🦋 💗 🦋
+            </div>
+
+        </section>
+
+        <footer>
+            HECHO CON MUCHO CARIÑO ✨
+        </footer>
+
+    </main>
+
+</div>
+
+<script>
+
+function abrirSorpresa() {
+
+    const sorpresa = document.getElementById("sorpresa");
+
+    sorpresa.style.display = "block";
+
+    document.querySelector(".boton").style.display = "none";
+
+    lanzarConfeti();
+
+    sorpresa.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+function lanzarConfeti() {
+
+    const simbolos = ["💗", "✨", "🌸", "🎉", "💕", "⭐"];
+
+    for (let i = 0; i < 55; i++) {
+
+        const elemento = document.createElement("span");
+
+        elemento.classList.add("confeti");
+
+        elemento.innerHTML =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        elemento.style.left = Math.random() * 100 + "vw";
+
+        elemento.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        elemento.style.fontSize =
+            (Math.random() * 15 + 12) + "px";
+
+        document.body.appendChild(elemento);
+
+        setTimeout(() => {
+            elemento.remove();
+        }, 6000);
+    }
+}
+
+</script>
 
 </body>
 </html>
