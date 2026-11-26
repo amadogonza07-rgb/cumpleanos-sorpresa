@@ -4,25 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mis 18 años de ti ✨</title>
+<title>Birthday Celebration | 18</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #24132f, #663c75, #c47da9);
-    color: white;
-    overflow-x: hidden;
+:root {
+    --pink: #ffb8dc;
+    --purple: #bda5ff;
+    --white: #fff8ff;
 }
 
-/* ESTRELLAS DEL FONDO */
+body {
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    color: white;
+    background:
+        radial-gradient(ellipse at 20% 20%, #684c9e 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, #8b477f 0%, transparent 40%),
+        linear-gradient(135deg, #17132e, #33204e, #20172f);
+    overflow-x: hidden;
+}
 
 body::before {
     content: "";
@@ -30,41 +38,245 @@ body::before {
     inset: 0;
     pointer-events: none;
     background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(#ffd8ee 1px, transparent 1px);
-    background-size: 65px 65px, 95px 95px;
-    background-position: 0 0, 30px 40px;
-    opacity: .4;
-    animation: estrellas 15s linear infinite;
+        radial-gradient(#ffffff 1px, transparent 1px),
+        radial-gradient(#e9c7ff 1px, transparent 1px);
+    background-size: 75px 75px, 110px 110px;
+    background-position: 0 0, 35px 50px;
+    opacity: .35;
+    animation: starMove 20s linear infinite;
 }
 
-@keyframes estrellas {
-    to { background-position: 100px 150px, 130px 190px; }
+@keyframes starMove {
+    to {
+        background-position: 150px 200px, 200px 250px;
+    }
 }
 
-.contenedor {
+.container {
+    position: relative;
+    z-index: 2;
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 30px 15px;
+    align-items: center;
+    padding: 35px 16px;
 }
 
-.tarjeta {
-    position: relative;
+.card {
     width: 100%;
-    max-width: 600px;
-    padding: 45px 25px;
+    max-width: 680px;
+    padding: 42px 25px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,.35);
-    border-radius: 30px;
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 60px rgba(0,0,0,.3);
-    animation: entrada 1.2s ease;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.09);
+    backdrop-filter: blur(18px);
+    border-radius: 32px;
+    box-shadow: 0 25px 80px rgba(0,0,0,.3);
+    animation: entrance 1.3s ease;
 }
 
-@keyframes entrada {
+@keyframes entrance {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.tag {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #eacfff;
+    font-weight: 700;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 8vw, 56px);
+    margin: 12px 0;
+}
+
+.subtitle {
+    color: #e8d9f5;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(125px, 30vw, 195px);
+    font-weight: 800;
+    line-height: 1.15;
+    background: linear-gradient(
+        140deg,
+        #ffffff,
+        #ffc9e7,
+        #c9b7ff,
+        #fff1d3
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 25px #c18bff);
+    animation: numberGlow 3s infinite alternate;
+}
+
+@keyframes numberGlow {
+    to {
+        filter: drop-shadow(0 0 45px #ff9fdf);
+    }
+}
+
+.divider {
+    margin: 23px auto;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd1ec, transparent);
+}
+
+/* PASTEL */
+
+.cake-area {
+    margin: 28px auto 35px;
+    width: 260px;
+    height: 225px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.cake {
+    position: relative;
+    width: 190px;
+    height: 105px;
+    border-radius: 15px 15px 22px 22px;
+    background: linear-gradient(90deg, #c17bb5, #f0b5df, #b96eae);
+    box-shadow: 0 12px 25px rgba(0,0,0,.25);
+}
+
+.cake::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 32px;
+    top: -14px;
+    left: 0;
+    border-radius: 50%;
+    background: #ffe0f1;
+    box-shadow: 0 7px 0 #e9a9d6;
+}
+
+.cake::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    width: 13px;
+    height: 23px;
+    border-radius: 0 0 12px 12px;
+    background: #fff1f8;
+    box-shadow:
+        35px 3px #fff1f8,
+        72px 0 #fff1f8,
+        110px 3px #fff1f8,
+        145px 0 #fff1f8;
+}
+
+.plate {
+    position: absolute;
+    bottom: -8px;
+    width: 235px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(#f5e5ff, #bfa5d6);
+}
+
+.candle {
+    position: absolute;
+    z-index: 2;
+    width: 12px;
+    height: 57px;
+    bottom: 99px;
+    border-radius: 5px 5px 2px 2px;
+    background: repeating-linear-gradient(
+        135deg,
+        #ffffff 0px,
+        #ffffff 7px,
+        #ff9dcf 7px,
+        #ff9dcf 13px
+    );
+}
+
+.candle:nth-child(2) {
+    left: 94px;
+}
+
+.candle:nth-child(3) {
+    left: 124px;
+}
+
+.flame {
+    position: absolute;
+    width: 17px;
+    height: 24px;
+    top: -26px;
+    left: -2px;
+    background: #ffe28a;
+    border-radius: 50% 50% 45% 45%;
+    box-shadow: 0 0 15px #ffcb6c, 0 0 30px #ffb6a0;
+    animation: flicker .5s infinite alternate;
+    transform-origin: bottom;
+}
+
+@keyframes flicker {
+    from {
+        transform: rotate(-5deg) scale(1);
+    }
+    to {
+        transform: rotate(5deg) scale(.85);
+    }
+}
+
+.cake-decoration {
+    position: absolute;
+    z-index: 3;
+    bottom: 35px;
+    font-size: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button {
+    display: inline-block;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 30px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ffc3e6, #c4a8ff);
+    color: #38234e;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(220,157,255,.25);
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 35px rgba(220,157,255,.5);
+}
+
+#message {
+    display: none;
+    margin-top: 38px;
+    animation: showMessage 1.2s ease;
+}
+
+@keyframes showMessage {
     from {
         opacity: 0;
         transform: translateY(35px);
@@ -75,267 +287,252 @@ body::before {
     }
 }
 
-.etiqueta {
-    color: #ffe2f1;
-    letter-spacing: 5px;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
-.numero {
-    font-family: Georgia, serif;
-    font-size: clamp(110px, 25vw, 175px);
-    font-weight: bold;
-    line-height: 1.2;
-    background: linear-gradient(135deg, #fff4cc, #ffc4e3, #ffffff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 0 20px #ffb6df);
-    animation: brillo 3s infinite alternate;
-}
-
-@keyframes brillo {
-    to {
-        filter: drop-shadow(0 0 35px #ffb6df);
-    }
-}
-
-h1 {
-    font-size: clamp(25px, 6vw, 36px);
-    margin: 10px 0 18px;
-}
-
-.descripcion {
-    color: #f9e9f5;
-    line-height: 1.8;
-    font-size: 17px;
-    margin-bottom: 28px;
-}
-
-.boton {
-    border: none;
-    padding: 16px 32px;
-    border-radius: 40px;
-    background: linear-gradient(135deg, #ffb7dc, #e77db9);
-    color: #522544;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 25px rgba(255,150,210,.3);
-    transition: .3s;
-}
-
-.boton:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 35px rgba(255,150,210,.6);
-}
-
-.decoracion {
-    margin: 25px 0;
-    font-size: 25px;
-    letter-spacing: 12px;
-}
-
-#sorpresa {
-    display: none;
-    margin-top: 35px;
-    animation: aparecer 1.2s ease;
-}
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#sorpresa h2 {
-    color: #ffe0f1;
-    font-size: 27px;
+.message-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #ffd8f0;
     margin-bottom: 20px;
 }
 
-.carta {
-    padding: 25px;
-    background: rgba(255,255,255,.13);
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 20px;
-    line-height: 1.9;
-    color: #fff2fa;
-    font-size: 16px;
+.letter {
+    padding: 28px;
+    border-radius: 23px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.10);
+    color: #f6eafa;
+    line-height: 2;
+    font-size: 15px;
 }
 
-.firma {
-    margin-top: 25px;
-    color: #ffd7ec;
-    font-style: italic;
+.signature {
+    margin-top: 24px;
+    color: #ffc8e7;
+    font-weight: 700;
 }
 
-.confeti {
+footer {
+    margin-top: 38px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #d8c4e8;
+}
+
+/* GLOBOS */
+
+.balloon {
     position: fixed;
-    top: -15px;
-    z-index: 10;
+    z-index: 1;
+    bottom: -150px;
+    font-size: 55px;
+    animation: balloonUp 13s linear infinite;
     pointer-events: none;
-    animation: caer 4s linear forwards;
 }
 
-@keyframes caer {
-    to {
-        transform: translateY(110vh) rotate(720deg);
+.b1 { left: 4%; animation-delay: 0s; }
+.b2 { left: 87%; animation-delay: 4s; }
+.b3 { left: 20%; animation-delay: 8s; }
+
+@keyframes balloonUp {
+    0% {
+        transform: translateY(0) rotate(-10deg);
+        opacity: 0;
+    }
+    15% { opacity: .8; }
+    100% {
+        transform: translateY(-120vh) rotate(15deg);
         opacity: 0;
     }
 }
 
-footer {
-    margin-top: 30px;
-    color: #f5d5eb;
-    font-size: 12px;
-    letter-spacing: 2px;
+/* CONFETI */
+
+.confetti {
+    position: fixed;
+    z-index: 20;
+    top: -30px;
+    pointer-events: none;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(800deg);
+        opacity: 0;
+    }
 }
 
 @media(max-width: 480px) {
-    .tarjeta {
+    .card {
         padding: 35px 18px;
     }
 
-    .descripcion {
-        font-size: 15px;
+    .letter {
+        padding: 21px;
+        font-size: 14px;
+    }
+
+    .cake-area {
+        transform: scale(.9);
+        margin-top: 15px;
+        margin-bottom: 20px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="contenedor">
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
 
-    <main class="tarjeta">
+<div class="container">
 
-        <p class="etiqueta">
-            UNA FECHA MUY ESPECIAL
-        </p>
+<main class="card">
 
-        <div class="numero">18</div>
+    <p class="tag">A SPECIAL CELEBRATION</p>
 
-        <h1>¡Feliz cumpleaños! ✨</h1>
+    <div class="number">18</div>
 
-        <div class="decoracion">
-            ♡ ✧ ♡
+    <h1>¡Llegó tu gran día!</h1>
+
+    <p class="subtitle">
+        Una nueva etapa comienza...
+        <br>
+        y merece una celebración increíble.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="cake-area">
+
+        <div class="candle">
+            <div class="flame"></div>
         </div>
 
-        <p class="descripcion">
-            Hoy comienza una nueva etapa,
-            llena de sueños, aventuras,
-            experiencias y momentos inolvidables.
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+
+        <div class="cake">
+            <div class="cake-decoration">✦ ✨ ✦</div>
+        </div>
+
+        <div class="plate"></div>
+
+    </div>
+
+    <h2>Make a wish! ✨</h2>
+
+    <p class="subtitle">
+        Antes de descubrir tu sorpresa,
+        pide un deseo. 💜
+    </p>
+
+    <button class="button" onclick="celebrate()">
+        ¡Vamos a celebrar! 🎉
+    </button>
+
+    <section id="message">
+
+        <h2 class="message-title">
+            ¡Felices 18 años! 🎂
+        </h2>
+
+        <div class="letter">
+
+            Hoy comienza una etapa llena de
+            nuevas experiencias, aventuras,
+            sueños y muchísimas historias
+            por contar.
+
             <br><br>
-            Y esta pequeña sorpresa es para ti. 💗
-        </p>
 
-        <button class="boton" onclick="abrirSorpresa()">
-            Descubrir sorpresa ♡
-        </button>
+            Espero que nunca te falten motivos
+            para reír, personas con quienes
+            compartir momentos increíbles
+            y sueños que te emocionen.
 
-        <section id="sorpresa">
+            <br><br>
 
-            <div class="decoracion">
-                🎂 ✨ 🎀
+            Gracias por ser una gran amiga.
+            Que nunca pierdas esa forma tan
+            especial de ser y que esta nueva
+            vuelta al sol venga cargada de
+            cosas bonitas.
+
+            <br><br>
+
+            Disfruta cada momento, celebra
+            muchísimo y recuerda que
+            ¡lo mejor está por venir!
+
+            <div class="signature">
+                ¡Un abrazo enorme! 💜
             </div>
 
-            <h2>¡Bienvenidos tus 18! 🥂</h2>
+        </div>
 
-            <div class="carta">
+        <div style="font-size:35px; margin-top:25px;">
+            🎈 🎊 🥳 🎁
+        </div>
 
-                Hoy no es un día cualquiera,
-                hoy celebras 18 años de vida
-                y el comienzo de una etapa increíble.
+    </section>
 
-                <br><br>
+    <footer>
+        MADE WITH FRIENDSHIP & LOVE
+    </footer>
 
-                Deseo que nunca te falten motivos
-                para sonreír, personas que te quieran,
-                sueños por cumplir y aventuras
-                que algún día se conviertan
-                en recuerdos inolvidables.
-
-                <br><br>
-
-                Que la vida te sorprenda
-                con cosas maravillosas y que
-                nunca pierdas esa esencia
-                que te hace una persona especial.
-
-                <br><br>
-
-                ¡Disfruta muchísimo tus 18 años!
-
-                <div class="firma">
-                    Con mucho cariño. ❤️
-                </div>
-
-            </div>
-
-            <div class="decoracion">
-                🦋 💗 🦋
-            </div>
-
-        </section>
-
-        <footer>
-            HECHO CON MUCHO CARIÑO ✨
-        </footer>
-
-    </main>
-
+</main>
 </div>
 
 <script>
 
-function abrirSorpresa() {
+function celebrate() {
 
-    const sorpresa = document.getElementById("sorpresa");
+    const message = document.getElementById("message");
+    const button = document.querySelector(".button");
 
-    sorpresa.style.display = "block";
+    message.style.display = "block";
+    button.style.display = "none";
 
-    document.querySelector(".boton").style.display = "none";
+    confetti();
 
-    lanzarConfeti();
-
-    sorpresa.scrollIntoView({
+    message.scrollIntoView({
         behavior: "smooth",
         block: "center"
     });
 }
 
-function lanzarConfeti() {
+function confetti() {
 
-    const simbolos = ["💗", "✨", "🌸", "🎉", "💕", "⭐"];
+    const symbols = [
+        "🎉", "✨", "💜", "🎊", "🌸",
+        "⭐", "🎈", "🥳", "💗"
+    ];
 
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 90; i++) {
 
-        const elemento = document.createElement("span");
+        const piece = document.createElement("span");
 
-        elemento.classList.add("confeti");
+        piece.className = "confetti";
 
-        elemento.innerHTML =
-            simbolos[Math.floor(Math.random() * simbolos.length)];
+        piece.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
 
-        elemento.style.left = Math.random() * 100 + "vw";
+        piece.style.left = Math.random() * 100 + "vw";
 
-        elemento.style.animationDelay =
+        piece.style.animationDelay =
             Math.random() * 2 + "s";
 
-        elemento.style.fontSize =
-            (Math.random() * 15 + 12) + "px";
+        piece.style.fontSize =
+            (Math.random() * 18 + 12) + "px";
 
-        document.body.appendChild(elemento);
+        document.body.appendChild(piece);
 
         setTimeout(() => {
-            elemento.remove();
+            piece.remove();
         }, 6000);
     }
 }
