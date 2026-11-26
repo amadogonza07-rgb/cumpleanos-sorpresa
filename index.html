@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una sorpresa para ti</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #5c3157;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 25px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 35px rgba(80, 40, 90, 0.2);
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        .pastel {
+            font-size: 85px;
+            margin: 20px;
+            animation: flotar 2s infinite ease-in-out;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #e879ad;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            background: #d95791;
+        }
+
+        #mensaje {
+            display: none;
+            margin-top: 25px;
+            animation: aparecer 1s;
+        }
+
+        @keyframes flotar {
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tarjeta">
+
+        <h1>¡Tengo una sorpresa para ti! 💗</h1>
+
+        <div class="pastel">🎂</div>
+
+        <p>
+            Hoy es un día muy especial...
+            y quería prepararte algo diferente.
+        </p>
+
+        <button onclick="abrirSorpresa()">
+            Abrir sorpresa 💌
+        </button>
+
+        <div id="mensaje">
+            <h2>¡Feliz cumpleaños! 🎉</h2>
+
+            <p>
+                Espero que tengas un día increíble,
+                lleno de alegría, momentos bonitos
+                y muchas sonrisas.
+            </p>
+
+            <p>¡Que todos tus deseos se hagan realidad! ❤️</p>
+
+            <div style="font-size: 35px;">
+                🎈 🎁 🎊
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function abrirSorpresa() {
+            document.getElementById("mensaje").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
